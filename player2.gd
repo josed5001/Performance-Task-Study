@@ -2,9 +2,13 @@ extends Area2D
 
 
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var music = $"../Music"
+@onready var enemy_hit = $"../EnemyHit"
 
 @export var speed = 400
 
+func _ready():
+	music.play()
 func _physics_process(delta):
 	var velocity =  Vector2.ZERO
 	
@@ -25,3 +29,5 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	hide()
+	enemy_hit.play()
+	music.stop()
